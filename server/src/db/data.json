@@ -1,0 +1,137 @@
+{
+  "settings": {
+    "vocabulary": {
+      "quote_s": "Quote",
+      "quote_p": "Quotes",
+      "invoice_s": "Invoice",
+      "invoice_p": "Invoices",
+      "purchase_s": "Purchase",
+      "purchase_p": "Purchases",
+      "expense_s": "Expense",
+      "expense_p": "Expenses",
+      "payment_s": "Payment / Income",
+      "payment_p": "Payments & Income",
+      "item_s": "Item",
+      "item_p": "Items",
+      "vendor_s": "Vendor",
+      "vendor_p": "Vendors",
+      "employee_s": "Employee",
+      "employee_p": "Employees",
+      "customer_s": "Customer",
+      "customer_p": "Customers"
+    },
+    "company": {
+      "name": "Web Pros Africa",
+      "tagline": "Empowering Africa Through Cloud, Code & Digital Innovation",
+      "address1": "12 Innovation Hub Boulevard, Victoria Island",
+      "address2": "Lagos & Nairobi, Africa",
+      "email": "billing@webpros.africa",
+      "phone": "+254 700 555 120 / +234 800 555 0199",
+      "website": "https://webpros.africa",
+      "taxNumber": "AFR-WPA-2026-904",
+      "logoUrl": "/logo.png"
+    },
+    "tax": {
+      "useSalesTax": true,
+      "taxName": "Sales Tax / VAT",
+      "taxPercentage": 7.5
+    },
+    "defaults": {
+      "defaultIncomeType": "Web & Cloud Engineering",
+      "defaultExpenseType": "Cloud Infrastructure",
+      "defaultItemType": "Service",
+      "defaultDueDays": 30,
+      "currencySymbol": "R",
+      "currencyCode": "ZAR",
+      "currencyName": "South African Rand (ZAR)"
+    },
+    "orderMessages": {
+      "quote": "Thank you for choosing Web Pros Africa. This quote is valid for 30 calendar days from issue date. Certified African Cloud Infrastructure SLA guaranteed.",
+      "invoice": "Payment is due within 30 days of invoice date. Thank you for your valued business with Web Pros Africa. Bank transfer and online payment details enclosed.",
+      "purchase": "Please confirm purchase order acceptance within 48 hours. Shipments must match enclosed specifications."
+    },
+    "googleSheets": {
+      "sheetId": "",
+      "clientEmail": "",
+      "privateKey": "",
+      "apiKey": "",
+      "connected": false,
+      "lastSynced": null
+    }
+  },
+  "item_types": [
+    {
+      "id": "type-1",
+      "name": "Product",
+      "description": "Hardware, domain licenses, and digital assets"
+    },
+    {
+      "id": "type-2",
+      "name": "Service",
+      "description": "Web engineering, cloud DevOps, and consulting"
+    },
+    {
+      "id": "type-3",
+      "name": "Fee",
+      "description": "Administrative, setup, or provisioning fees"
+    },
+    {
+      "id": "type-4",
+      "name": "Discount",
+      "description": "Partner and volume promotional discount deduction"
+    }
+  ],
+  "expense_types": [
+    {
+      "id": "exp-1",
+      "name": "Cloud Infrastructure",
+      "description": "AWS Africa, Azure Cape Town, data centers"
+    },
+    {
+      "id": "exp-2",
+      "name": "Marketing & Growth",
+      "description": "Digital ads, African tech summit sponsorships"
+    },
+    {
+      "id": "exp-3",
+      "name": "Engineering Labor",
+      "description": "Software engineers, designers, DevOps contractors"
+    },
+    {
+      "id": "exp-4",
+      "name": "Office & Facilities",
+      "description": "Coworking spaces, internet fiber, hardware"
+    },
+    {
+      "id": "exp-5",
+      "name": "Compliance & Licensing",
+      "description": "Software licenses, domain registries, tax filings"
+    }
+  ],
+  "income_types": [
+    {
+      "id": "inc-1",
+      "name": "Web & Cloud Engineering",
+      "description": "Full-stack web application development"
+    },
+    {
+      "id": "inc-2",
+      "name": "Managed Cloud Retainers",
+      "description": "Monthly cloud server DevOps and 24/7 monitoring"
+    },
+    {
+      "id": "inc-3",
+      "name": "Domain & Hosting Licenses",
+      "description": "High-speed African cloud hosting plans"
+    },
+    {
+      "id": "inc-4",
+      "name": "UI/UX & Branding Packages",
+      "description": "Enterprise brand design and web experience"
+    }
+  ],
+  "names": [],
+  "items": [],
+  "orders": [],
+  "transactions": []
+}
