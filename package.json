@@ -1,0 +1,19 @@
+{
+  "name": "business-in-a-box",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Business In A Box - Full-stack business management and invoicing platform",
+  "scripts": {
+    "install:all": "npm --prefix client install && npm --prefix server install",
+    "build": "npm --prefix client install && npm --prefix client run build && npm --prefix server install --production=false",
+    "start": "node server/src/server.js",
+    "dev:server": "npm --prefix server run dev",
+    "dev:client": "npm --prefix client run dev"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "author": "Solomon Asiya",
+  "license": "ISC"
+}

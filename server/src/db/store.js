@@ -3,7 +3,7 @@ const path = require('path');
 const { v4: uuidv4 } = require('uuid');
 const { defaultSeedData } = require('../services/seedData');
 
-const DB_FILE = path.join(__dirname, 'data.json');
+const DB_FILE = process.env.DATA_PATH || path.join(__dirname, 'data.json');
 
 class DataStore {
   constructor() {
