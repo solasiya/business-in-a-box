@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Plus, Trash2, Calculator, Check, AlertCircle } from 'lucide-react';
+import { Plus, Trash2, Calculator, Check, AlertCircle, Building } from 'lucide-react';
 import Modal from '../../components/common/Modal';
 import { api } from '../../services/api';
 import { useVocab } from '../../context/VocabContext';
@@ -498,6 +498,33 @@ export default function OrderModal({ isOpen, onClose, orderToEdit, defaultType =
             )}
           </div>
         </div>
+
+        {/* Banking Details Reference Card for Quotes & Invoices */}
+        {(orderType === 'quote' || orderType === 'invoice') && (
+          <div style={{
+            background: 'var(--bg-surface)',
+            padding: '12px 14px',
+            borderRadius: 'var(--radius-md)',
+            border: '1px solid var(--border-subtle)',
+            fontSize: '0.8rem',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            flexWrap: 'wrap',
+            gap: '8px'
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#818cf8', fontWeight: 600 }}>
+              <Building size={16} />
+              <span>Banking Details Printed on Document:</span>
+            </div>
+            <div style={{ color: 'var(--text-secondary)', display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+              <span><strong>Bank:</strong> {settings.company?.bankName || 'Capitec Business'}</span>
+              <span><strong>Acc Name:</strong> {settings.company?.accountName || 'Web Pros Africa'}</span>
+              <span><strong>Acc #:</strong> {settings.company?.accountNumber || '1055221239'}</span>
+              <span><strong>Branch:</strong> {settings.company?.branchCode || '450105'}</span>
+            </div>
+          </div>
+        )}
 
         {/* Custom Message / Terms Footer */}
         <div className="form-group" style={{ margin: 0 }}>

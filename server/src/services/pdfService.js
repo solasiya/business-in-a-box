@@ -396,6 +396,8 @@ async function generateOrderPdf(order) {
     currentY -= 16;
   };
 
+  const sectionStartY = currentY;
+
   drawSummaryRow('Subtotal', order.subtotal || 0);
 
   if (order.useSalesTax && order.taxAmount > 0) {
@@ -411,16 +413,89 @@ async function generateOrderPdf(order) {
     drawSummaryRow('Balance Due', order.balanceDue || 0, true);
   }
 
-  currentY -= 15;
+  // --- BANKING DETAILS SECTION (For Quotes & Invoices) ---
+  const showBankDetails = (order.orderType === 'quote' || order.orderType === 'invoice' || !order.orderType) && 
+    (company.bankName || company.accountNumber || true);
+
+  let bankBottomY = sectionStartY;
+  if (showBankDetails) {
+    const bankBoxX = 40;
+    const bankBoxWidth = 265;
+    const bankBoxHeight = 82;
+    const bankBoxY = sectionStartY - bankBoxHeight + 5;
+
+    // Card background & borders
+    page.drawRectangle({
+      x: bankBoxX,
+      y: bankBoxY,
+      width: bankBoxWidth,
+      height: bankBoxHeight,
+      color: rgb(0.97, 0.98, 1.0),
+      borderColor: borderColor,
+      borderWidth: 1,
+    });
+
+    page.drawRectangle({
+      x: bankBoxX,
+      y: bankBoxY + bankBoxHeight - 3,
+      width: bankBoxWidth,
+      height: 3,
+      color: secondaryColor,
+    });
+
+    // Section Header
+    page.drawText('BANKING / PAYMENT DETAILS', {
+      x: bankBoxX + 10,
+      y: bankBoxY + bankBoxHeight - 15,
+      size: 8,
+      font: fontHelveticaBold,
+      color: primaryColor,
+    });
+
+    const drawBankRow = (label, val, yPos) => {
+      page.drawText(label, {
+        x: bankBoxX + 10,
+        y: yPos,
+        size: 7.5,
+        font: fontHelveticaBold,
+        color: mutedTextColor,
+      });
+      page.drawText(String(val || ''), {
+        x: bankBoxX + 90,
+        y: yPos,
+        size: 7.5,
+        font: fontHelvetica,
+        color: darkTextColor,
+      });
+    };
+
+    let detailY = bankBoxY + bankBoxHeight - 28;
+    drawBankRow('Bank Name:', company.bankName || 'Capitec Business', detailY);
+    detailY -= 11;
+    drawBankRow('Account Name:', company.accountName || 'Web Pros Africa', detailY);
+    detailY -= 11;
+    drawBankRow('Account No:', company.accountNumber || '1055221239', detailY);
+    detailY -= 11;
+    drawBankRow('Branch Code:', company.branchCode || '450105', detailY);
+    detailY -= 11;
+    drawBankRow('Payment Ref:', order.orderNumber ? `# ${order.orderNumber}` : 'Document Number', detailY);
+
+    bankBottomY = bankBoxY;
+  }
+
+  currentY = Math.min(currentY, bankBottomY) - 15;
 
   // --- CUSTOM FOOTER MESSAGE / TERMS ---
   const customMessage = order.customMessage || settings.orderMessages[order.orderType] || '';
   if (customMessage) {
+    const termsBoxHeight = 55;
+    const termsY = Math.max(65, currentY - termsBoxHeight);
+
     page.drawRectangle({
       x: 40,
-      y: 80,
+      y: termsY,
       width: width - 80,
-      height: 65,
+      height: termsBoxHeight,
       color: rgb(0.98, 0.98, 0.99),
       borderColor: borderColor,
       borderWidth: 1,
@@ -428,7 +503,7 @@ async function generateOrderPdf(order) {
 
     page.drawText('TERMS & CONDITIONS / NOTES:', {
       x: 52,
-      y: 130,
+      y: termsY + termsBoxHeight - 14,
       size: 8,
       font: fontHelveticaBold,
       color: secondaryColor,
@@ -437,7 +512,7 @@ async function generateOrderPdf(order) {
     // Text wrapper
     const words = customMessage.split(' ');
     let line = '';
-    let textY = 117;
+    let textY = termsY + termsBoxHeight - 26;
     for (const word of words) {
       const testLine = line + (line ? ' ' : '') + word;
       if (fontHelvetica.widthOfTextAtSize(testLine, 8) > width - 110) {

@@ -29,7 +29,11 @@
       "phone": "+254 700 555 120 / +234 800 555 0199",
       "website": "https://webpros.africa",
       "taxNumber": "AFR-WPA-2026-904",
-      "logoUrl": "/logo.png"
+      "logoUrl": "/logo.png",
+      "bankName": "Capitec Business",
+      "accountName": "Web Pros Africa",
+      "accountNumber": "1055221239",
+      "branchCode": "450105"
     },
     "tax": {
       "useSalesTax": true,

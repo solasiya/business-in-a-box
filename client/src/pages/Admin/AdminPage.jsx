@@ -474,6 +474,70 @@ export default function AdminPage() {
             />
           </div>
 
+          {/* Banking Details Sub-Section */}
+          <div style={{
+            background: 'var(--bg-surface)',
+            padding: '16px',
+            borderRadius: 'var(--radius-md)',
+            border: '1px solid var(--border-subtle)',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '14px',
+            marginTop: '8px'
+          }}>
+            <div style={{ fontWeight: 700, fontSize: '0.9rem', color: '#818cf8', display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <span>Official Banking Details (Printed on Quotes & Invoices)</span>
+            </div>
+
+            <div className="grid-2">
+              <div className="form-group" style={{ margin: 0 }}>
+                <label>Bank Name</label>
+                <input
+                  type="text"
+                  className="input"
+                  value={companyForm.bankName || ''}
+                  onChange={(e) => setCompanyForm({ ...companyForm, bankName: e.target.value })}
+                  placeholder="e.g. Capitec Business"
+                />
+              </div>
+
+              <div className="form-group" style={{ margin: 0 }}>
+                <label>Account Name / Holder</label>
+                <input
+                  type="text"
+                  className="input"
+                  value={companyForm.accountName || ''}
+                  onChange={(e) => setCompanyForm({ ...companyForm, accountName: e.target.value })}
+                  placeholder="e.g. Web Pros Africa"
+                />
+              </div>
+            </div>
+
+            <div className="grid-2">
+              <div className="form-group" style={{ margin: 0 }}>
+                <label>Account Number</label>
+                <input
+                  type="text"
+                  className="input"
+                  value={companyForm.accountNumber || ''}
+                  onChange={(e) => setCompanyForm({ ...companyForm, accountNumber: e.target.value })}
+                  placeholder="e.g. 1055221239"
+                />
+              </div>
+
+              <div className="form-group" style={{ margin: 0 }}>
+                <label>Branch Code</label>
+                <input
+                  type="text"
+                  className="input"
+                  value={companyForm.branchCode || ''}
+                  onChange={(e) => setCompanyForm({ ...companyForm, branchCode: e.target.value })}
+                  placeholder="e.g. 450105"
+                />
+              </div>
+            </div>
+          </div>
+
           <div style={{ display: 'flex', justifyContent: 'flex-end', borderTop: '1px solid var(--border-subtle)', paddingTop: '16px' }}>
             <button type="submit" className="btn btn-primary" disabled={saving}>
               <Save size={16} />
