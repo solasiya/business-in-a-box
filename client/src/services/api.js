@@ -36,6 +36,13 @@ export const api = {
       body: JSON.stringify(data)
     }).then(handleResponse),
 
+  importFromGoogleSheets: (data) =>
+    fetch(`${API_BASE}/settings/google-sheets/import`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    }).then(handleResponse),
+
   // Types
   getTypes: () => fetch(`${API_BASE}/types`).then(handleResponse),
   createItemType: (data) =>

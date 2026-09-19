@@ -156,7 +156,11 @@ export default function AdminPage() {
     e.preventDefault();
     try {
       setSaving(true);
-      await updateSettings({ googleSheets: sheetsForm });
+      const payload = { ...sheetsForm, connected: true };
+      await updateSettings({ googleSheets: payload });
+      try {
+        localStorage.setItem('biab_google_sheets_config', JSON.stringify(payload));
+      } catch (_) {}
       triggerSaveNotification();
     } catch (err) {
       alert('Failed to save Google Sheets settings: ' + err.message);
@@ -191,6 +195,31 @@ export default function AdminPage() {
       const res = await api.exportToGoogleSheets(sheetsForm);
       if (res.success) {
         setSheetStatusMsg({ type: 'success', text: res.message });
+        try {
+          localStorage.setItem('biab_google_sheets_config', JSON.stringify({ ...sheetsForm, connected: true }));
+        } catch (_) {}
+        refreshSettings();
+      } else {
+        setSheetStatusMsg({ type: 'error', text: res.error });
+      }
+    } catch (err) {
+      setSheetStatusMsg({ type: 'error', text: err.message });
+    } finally {
+      setSheetExporting(false);
+    }
+  };
+
+  // Import from Google Sheets
+  const handleImportSheets = async () => {
+    try {
+      setSheetExporting(true);
+      setSheetStatusMsg(null);
+      const res = await api.importFromGoogleSheets(sheetsForm);
+      if (res.success) {
+        setSheetStatusMsg({ type: 'success', text: res.message });
+        try {
+          localStorage.setItem('biab_google_sheets_config', JSON.stringify({ ...sheetsForm, connected: true }));
+        } catch (_) {}
         refreshSettings();
       } else {
         setSheetStatusMsg({ type: 'error', text: res.error });
@@ -918,10 +947,39 @@ export default function AdminPage() {
       {activeAdminTab === 'sheets' && (
         <form onSubmit={handleSaveSheetsConfig} className="card" style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
           <div>
-            <h3 style={{ fontSize: '1.15rem', fontWeight: 700 }}>Google Sheets Database Integration</h3>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '10px' }}>
+              <h3 style={{ fontSize: '1.15rem', fontWeight: 700 }}>Google Sheets Cloud Database & Auto-Sync</h3>
+              {sheetsForm.sheetId && sheetsForm.clientEmail ? (
+                <span className="badge badge-success" style={{ padding: '6px 12px', fontSize: '0.8rem', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                  <CheckCircle size={14} /> Two-Way Cloud Auto-Sync Active
+                </span>
+              ) : (
+                <span className="badge badge-warning" style={{ padding: '6px 12px', fontSize: '0.8rem' }}>
+                  Not Configured
+                </span>
+              )}
+            </div>
             <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', marginTop: '4px' }}>
-              Connect your live Google Sheet spreadsheet to automatically synchronize or export Orders, Transactions, Contacts, and Catalog items into cloud tabs.
+              Connect your live Google Sheet spreadsheet to automatically persist, restore, and synchronize Orders, Transactions, Contacts, and Catalog items in real time across page reloads and Render container restarts.
             </p>
+          </div>
+
+          <div style={{
+            background: 'var(--bg-surface)',
+            padding: '14px',
+            borderRadius: 'var(--radius-md)',
+            border: '1px solid var(--border-subtle)',
+            fontSize: '0.8rem',
+            color: 'var(--text-secondary)',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '6px'
+          }}>
+            <div style={{ fontWeight: 700, color: '#818cf8', display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <Database size={15} /> Cloud Persistence & Recovery Engine
+            </div>
+            <span>• <strong>Automatic Backup:</strong> Changes made in the app are automatically synced to Google Sheets in the background.</span>
+            <span>• <strong>Automatic Recovery:</strong> On page load or container reboot, your credentials and data are automatically restored from Google Sheets.</span>
           </div>
 
           {sheetStatusMsg && (
@@ -983,8 +1041,8 @@ export default function AdminPage() {
             </div>
           )}
 
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid var(--border-subtle)', paddingTop: '16px' }}>
-            <div style={{ display: 'flex', gap: '10px' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px', borderTop: '1px solid var(--border-subtle)', paddingTop: '16px' }}>
+            <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
               <button
                 type="button"
                 className="btn btn-secondary"
@@ -993,6 +1051,16 @@ export default function AdminPage() {
               >
                 <RefreshCw size={15} className={sheetTesting ? 'animate-spin' : ''} />
                 {sheetTesting ? 'Testing...' : 'Test Connection'}
+              </button>
+
+              <button
+                type="button"
+                className="btn btn-secondary"
+                onClick={handleImportSheets}
+                disabled={sheetExporting || !sheetsForm.sheetId}
+              >
+                <Database size={15} />
+                {sheetExporting ? 'Syncing...' : 'Import & Sync from Google Sheets'}
               </button>
 
               <button
@@ -1008,7 +1076,7 @@ export default function AdminPage() {
 
             <button type="submit" className="btn btn-primary" disabled={saving}>
               <Save size={16} />
-              {saving ? 'Saving...' : 'Save Google Sheets Config'}
+              {saving ? 'Saving...' : 'Save & Enable Auto-Sync'}
             </button>
           </div>
         </form>

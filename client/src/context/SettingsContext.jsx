@@ -74,6 +74,36 @@ export function SettingsProvider({ children }) {
         if (res.data.vocabulary) {
           setVocab(res.data.vocabulary);
         }
+
+        const serverGs = res.data.googleSheets || {};
+        if (serverGs.sheetId && serverGs.clientEmail) {
+          // Persist credentials locally
+          try {
+            localStorage.setItem('biab_google_sheets_config', JSON.stringify(serverGs));
+          } catch (_) {}
+        } else {
+          // Server returned empty Google Sheets config (e.g. after container restart on Render)
+          try {
+            const cachedGsRaw = localStorage.getItem('biab_google_sheets_config');
+            if (cachedGsRaw) {
+              const cachedGs = JSON.parse(cachedGsRaw);
+              if (cachedGs.sheetId && cachedGs.clientEmail && cachedGs.privateKey) {
+                console.log('⚡ Restoring Google Sheets cloud connection from browser cache...');
+                await api.updateSettings({ googleSheets: cachedGs });
+                const importRes = await api.importFromGoogleSheets(cachedGs);
+                if (importRes && importRes.data) {
+                  const updatedRes = await api.getSettings();
+                  if (updatedRes && updatedRes.data) {
+                    setSettings(updatedRes.data);
+                    if (updatedRes.data.vocabulary) setVocab(updatedRes.data.vocabulary);
+                  }
+                }
+              }
+            }
+          } catch (e) {
+            console.warn('Auto-restore Google Sheets from localStorage failed:', e.message);
+          }
+        }
       }
     } catch (err) {
       console.warn('Could not load settings from server:', err.message);
@@ -88,6 +118,11 @@ export function SettingsProvider({ children }) {
       setSettings(res.data);
       if (res.data.vocabulary) {
         setVocab(res.data.vocabulary);
+      }
+      if (patch.googleSheets && patch.googleSheets.sheetId) {
+        try {
+          localStorage.setItem('biab_google_sheets_config', JSON.stringify(res.data.googleSheets || patch.googleSheets));
+        } catch (_) {}
       }
     }
     return res;

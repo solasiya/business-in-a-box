@@ -45,4 +45,15 @@ router.post('/google-sheets/export', async (req, res) => {
   }
 });
 
+// Import / Restore from Google Sheet
+router.post('/google-sheets/import', async (req, res) => {
+  try {
+    const { sheetId, clientEmail, privateKey } = req.body;
+    const result = await sheetsService.importFromSheets(sheetId, { clientEmail, privateKey });
+    res.json(result);
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
 module.exports = router;

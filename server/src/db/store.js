@@ -4,6 +4,7 @@ const { v4: uuidv4 } = require('uuid');
 const { defaultSeedData } = require('../services/seedData');
 
 const DB_FILE = process.env.DATA_PATH || path.join(__dirname, 'data.json');
+const os = require('os');
 
 class DataStore {
   constructor() {
@@ -13,12 +14,44 @@ class DataStore {
 
   init() {
     try {
-      if (fs.existsSync(DB_FILE)) {
+      const tmpPath = path.join(os.tmpdir(), 'biab_data.json');
+      if (fs.existsSync(tmpPath)) {
+        const raw = fs.readFileSync(tmpPath, 'utf8');
+        this.data = JSON.parse(raw);
+      } else if (fs.existsSync(DB_FILE)) {
         const raw = fs.readFileSync(DB_FILE, 'utf8');
         this.data = JSON.parse(raw);
       } else {
         this.data = JSON.parse(JSON.stringify(defaultSeedData));
         this.persist();
+      }
+
+      // Check environment variables for Google Sheets credentials
+      if (process.env.GOOGLE_SHEETS_ID && process.env.GOOGLE_SHEETS_CLIENT_EMAIL && process.env.GOOGLE_SHEETS_PRIVATE_KEY) {
+        this.data.settings.googleSheets = {
+          ...this.data.settings.googleSheets,
+          sheetId: process.env.GOOGLE_SHEETS_ID,
+          clientEmail: process.env.GOOGLE_SHEETS_CLIENT_EMAIL,
+          privateKey: process.env.GOOGLE_SHEETS_PRIVATE_KEY,
+          connected: true
+        };
+      }
+
+      // Auto-import database from Google Sheets on server boot if connected
+      const gs = this.data.settings?.googleSheets;
+      if (gs && gs.sheetId && gs.clientEmail && gs.privateKey) {
+        setTimeout(async () => {
+          try {
+            const sheetsService = require('../services/sheetsService');
+            console.log('⚡ DataStore: Auto-importing latest cloud database state from Google Sheets...');
+            await sheetsService.importFromSheets(gs.sheetId, {
+              clientEmail: gs.clientEmail,
+              privateKey: gs.privateKey
+            });
+          } catch (err) {
+            console.warn('Auto-import on startup failed silently:', err.message);
+          }
+        }, 1000);
       }
     } catch (err) {
       console.error('Error initializing DataStore from disk:', err);
@@ -30,8 +63,28 @@ class DataStore {
   persist() {
     try {
       fs.writeFileSync(DB_FILE, JSON.stringify(this.data, null, 2), 'utf8');
+      const tmpPath = path.join(os.tmpdir(), 'biab_data.json');
+      fs.writeFileSync(tmpPath, JSON.stringify(this.data, null, 2), 'utf8');
     } catch (err) {
       console.error('Error saving data to disk:', err);
+    }
+    this.triggerAutoSync();
+  }
+
+  triggerAutoSync() {
+    const gs = this.data?.settings?.googleSheets;
+    if (gs && (gs.connected || (gs.sheetId && gs.clientEmail && gs.privateKey))) {
+      setTimeout(async () => {
+        try {
+          const sheetsService = require('../services/sheetsService');
+          await sheetsService.exportToSheets(gs.sheetId, {
+            clientEmail: gs.clientEmail,
+            privateKey: gs.privateKey
+          });
+        } catch (e) {
+          console.warn('Background auto-sync to Google Sheets failed silently:', e.message);
+        }
+      }, 800);
     }
   }
 
