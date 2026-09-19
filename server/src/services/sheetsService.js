@@ -62,28 +62,39 @@ class GoogleSheetsService {
 
       const allData = store.getAllData();
 
-      // Ensure sheets exist
-      const sheetMeta = await sheets.spreadsheets.get({ spreadsheetId: sheetId });
-      const existingTitles = sheetMeta.data.sheets.map(s => s.properties.title);
+      // Ensure required tabs exist (cached after first check to avoid rate limits)
+      if (!this.verifiedSheets) this.verifiedSheets = {};
+      if (!this.verifiedSheets[sheetId]) {
+        try {
+          const sheetMeta = await sheets.spreadsheets.get({ spreadsheetId: sheetId });
+          const existingTitles = sheetMeta.data.sheets.map(s => s.properties.title);
 
-      const requiredTabs = ['Names', 'Items', 'Orders', 'Transactions', 'Settings'];
-      const requests = [];
+          const requiredTabs = ['Names', 'Items', 'Orders', 'Transactions', 'Settings'];
+          const requests = [];
 
-      for (const tab of requiredTabs) {
-        if (!existingTitles.includes(tab)) {
-          requests.push({
-            addSheet: {
-              properties: { title: tab }
+          for (const tab of requiredTabs) {
+            if (!existingTitles.includes(tab)) {
+              requests.push({
+                addSheet: {
+                  properties: { title: tab }
+                }
+              });
             }
-          });
-        }
-      }
+          }
 
-      if (requests.length > 0) {
-        await sheets.spreadsheets.batchUpdate({
-          spreadsheetId: sheetId,
-          resource: { requests }
-        });
+          if (requests.length > 0) {
+            await sheets.spreadsheets.batchUpdate({
+              spreadsheetId: sheetId,
+              resource: { requests }
+            });
+          }
+          this.verifiedSheets[sheetId] = true;
+        } catch (metaErr) {
+          if (metaErr.status === 429 || (metaErr.message && metaErr.message.includes('Quota exceeded'))) {
+            console.warn('Google Sheets API Rate Limit (429) encountered. Auto-sync will resume shortly.');
+            return { success: false, error: 'Google Sheets rate limit reached. Auto-sync will retry automatically.' };
+          }
+        }
       }
 
       // Format data for Names

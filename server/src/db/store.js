@@ -74,7 +74,10 @@ class DataStore {
   triggerAutoSync() {
     const gs = this.data?.settings?.googleSheets;
     if (gs && (gs.connected || (gs.sheetId && gs.clientEmail && gs.privateKey))) {
-      setTimeout(async () => {
+      if (this.syncTimer) {
+        clearTimeout(this.syncTimer);
+      }
+      this.syncTimer = setTimeout(async () => {
         try {
           const sheetsService = require('../services/sheetsService');
           await sheetsService.exportToSheets(gs.sheetId, {
@@ -84,7 +87,7 @@ class DataStore {
         } catch (e) {
           console.warn('Background auto-sync to Google Sheets failed silently:', e.message);
         }
-      }, 800);
+      }, 3000); // 3-second debounce window to coalesce rapid changes
     }
   }
 
