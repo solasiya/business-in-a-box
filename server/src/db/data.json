@@ -55,12 +55,12 @@
       "purchase": "Please confirm purchase order acceptance within 48 hours. Shipments must match enclosed specifications."
     },
     "googleSheets": {
-      "sheetId": "",
-      "clientEmail": "",
-      "privateKey": "",
+      "sheetId": "1S31CSWay3xEiZXv6L4m1RDc_XKK8SVe7oPh9w2cJYcU",
+      "clientEmail": "webprosafrica@businessinabox-504917.iam.gserviceaccount.com",
+      "privateKey": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCcTiLCOVQPjsPo\n8sWvQEmkcA/D6vNSiqTsPIKM2yY578AQKahHLNldtPDVUK+aNuVNTv/l0jsRmM+D\nKaLEnW5jv7XAbq/PVqdqwDRnnkF5pkBJbN9B3z5Km5mGwtyDeqdfM7EOAtPSponM\nPTEsYk/VfqJpdyrZNeMromgKtusF2LH1BFxlrCMevdPYdeDenEIaJ9GqHXM/2zM4\nT04qu8PCtsLUj0SUq0w4mnUtpDta/ro46hVXDeosuiENIgZYeN2TdGc9SYdVlJ3Q\nhRbHMeIuzhvuoXpWDPGLRRmGDRzmtMRQDeYj6Q/aTIxyCPKug7g5/hwNT781911i\nnKiYYZtvAgMBAAECggEAKo9oDYS4q+fO1n5Mb7TMmJbe5BT0nlQcJisvzRTbKslq\nfbwqEv9WTJq5PQxUVGSAOXW6XiTJarg2QNu0c17+sPCBl91Lx+Qrf/jIDDLeVzZ6\nqMOZYwFbn8sQmc4zZyWdr2GO42bHsMMiIFfFLPW0EUkDBj6pjy2KJtZ5B/nYsuVq\nTPY0eZzGtoLZCGdS324kBLk9bRwRwVdk4fdon0o9nFVABlaBg9kczhgV4OZkYIBq\nBKarkwTE7Ow9ZpW+0eFuIGbVMS1vicVzF2BkJyH967p0OeRRsvMoq7Ua4hGxMIF0\nmcHOkVRGI5DSSL95B7ivToe4RUQUZN5Nd1DczTae2QKBgQDNqnWKvNDh76ati+20\nAm6fQCKkallugC3qWNf9+Idv7cgYGMtsIWw7w9MnoY0J0mf9o09smtItUiBfc9a7\nnhAhAxd7O4Uf1HkfVNLY9CXdV5i86TF1D5GvL3NLh67huLJ4F0dyT8IO5k2dQpal\nzzk/DlZk23Ua+Ff0/08eb25sqwKBgQDCjxg7D3t99nlaU9CAqDtqfTa9O392Tcin\nNJbv7RL9Ro170HytptbKOxEvF2X59amfYCCshutqqDr0cVMiGzmcVNfQP2qPmQWe\nZ61QNUjbxdSUvbrL6skTdt1Q2mUgtX7RPzXqEIHZQr2BZ0idXQzFllgZekuMK1YR\nRYfeKujETQKBgEq52KNkH3E4JhOAeAmjqJXsM6oRihUANa6kQTZiCrO8batzttW+\n/xhn+ly38grTjD04DS+kwSD+agzEhgz9TVbxTKLV6XS7OpcLtuBlNSzLGw/omrOx\nyHkigH28+unAtfe0XZ1HJXdMbn7pJttwA5jJmNJkepQmD69Q5GpminSpAoGBAKlV\ngfFleEYZz2UercpMoen9MTdiIX4GFS3yR6xq2qw2S84Hl3xMSYWaA0rJQqhbeFaO\ng+GlTCB4a1d1irWUnH/EGFHX4Bc7R/imo+G7fr5JYMxUldAFeRzHx7gnXP0q+kWE\njpg55coCnI2UJ09PPV57jBIgrsBAt5gwvCBRmGXBAoGAK5hhBw8dGOoBi9Zr7DBt\nVkB5LP+yZInyts54kN7Lt9cGbmfDU8QqdYa5PADaklfPSId6saNAUk5e3ugxJqw9\nZicRZE3GF1dNTiE0bn2TJ1iAfXGH/34iAZE3yeJWHzDJ3scvDz6h7oE7Jy76Y+hp\nmOLxgZxM4hQiNv+/3EQlLNU=\n-----END PRIVATE KEY-----\n",
       "apiKey": "",
-      "connected": false,
-      "lastSynced": null
+      "connected": true,
+      "lastSynced": "2026-09-19T21:10:35.287Z"
     }
   },
   "item_types": [
