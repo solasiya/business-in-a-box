@@ -6,6 +6,7 @@ import {
   Users, 
   Package, 
   Settings as SettingsIcon,
+  ShieldCheck,
   ChevronRight
 } from 'lucide-react';
 import { useVocab } from '../../context/VocabContext';
@@ -56,6 +57,13 @@ export default function Sidebar({ activeTab, setActiveTab }) {
       dynamicLabel: 'Admin & Settings',
       icon: SettingsIcon,
       subtitle: 'Vocabulary & Config'
+    },
+    {
+      id: 'auth',
+      label: 'Super Admin Auth',
+      dynamicLabel: 'Super Admin Security Portal',
+      icon: ShieldCheck,
+      subtitle: 'Glassmorphic Login Gate'
     }
   ];
 

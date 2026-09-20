@@ -21,14 +21,14 @@
       "customer_p": "Customers"
     },
     "company": {
-      "name": "Web Pros Africa",
+      "name": "WEB PROS AFRICA (PTY) LTD",
       "tagline": "Empowering Africa Through Cloud, Code & Digital Innovation",
-      "address1": "12 Innovation Hub Boulevard, Victoria Island",
-      "address2": "Lagos & Nairobi, Africa",
-      "email": "billing@webpros.africa",
-      "phone": "+254 700 555 120 / +234 800 555 0199",
-      "website": "https://webpros.africa",
-      "taxNumber": "AFR-WPA-2026-904",
+      "address1": "UNIT 32 STONEHEDGE MEWS,52 DISA ROAD",
+      "address2": "CAPE TOWN,WESTERN CAPE, 7151, SOUTH AFRICA",
+      "email": "info@webprosafrica.co.za",
+      "phone": "+27781781007",
+      "website": "https://webprosafrica.co.za",
+      "taxNumber": "2026 / 480123 / 07",
       "logoUrl": "/logo.png",
       "bankName": "Capitec Business",
       "accountName": "Web Pros Africa",
@@ -58,9 +58,8 @@
       "sheetId": "1S31CSWay3xEiZXv6L4m1RDc_XKK8SVe7oPh9w2cJYcU",
       "clientEmail": "webprosafrica@businessinabox-504917.iam.gserviceaccount.com",
       "privateKey": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCcTiLCOVQPjsPo\n8sWvQEmkcA/D6vNSiqTsPIKM2yY578AQKahHLNldtPDVUK+aNuVNTv/l0jsRmM+D\nKaLEnW5jv7XAbq/PVqdqwDRnnkF5pkBJbN9B3z5Km5mGwtyDeqdfM7EOAtPSponM\nPTEsYk/VfqJpdyrZNeMromgKtusF2LH1BFxlrCMevdPYdeDenEIaJ9GqHXM/2zM4\nT04qu8PCtsLUj0SUq0w4mnUtpDta/ro46hVXDeosuiENIgZYeN2TdGc9SYdVlJ3Q\nhRbHMeIuzhvuoXpWDPGLRRmGDRzmtMRQDeYj6Q/aTIxyCPKug7g5/hwNT781911i\nnKiYYZtvAgMBAAECggEAKo9oDYS4q+fO1n5Mb7TMmJbe5BT0nlQcJisvzRTbKslq\nfbwqEv9WTJq5PQxUVGSAOXW6XiTJarg2QNu0c17+sPCBl91Lx+Qrf/jIDDLeVzZ6\nqMOZYwFbn8sQmc4zZyWdr2GO42bHsMMiIFfFLPW0EUkDBj6pjy2KJtZ5B/nYsuVq\nTPY0eZzGtoLZCGdS324kBLk9bRwRwVdk4fdon0o9nFVABlaBg9kczhgV4OZkYIBq\nBKarkwTE7Ow9ZpW+0eFuIGbVMS1vicVzF2BkJyH967p0OeRRsvMoq7Ua4hGxMIF0\nmcHOkVRGI5DSSL95B7ivToe4RUQUZN5Nd1DczTae2QKBgQDNqnWKvNDh76ati+20\nAm6fQCKkallugC3qWNf9+Idv7cgYGMtsIWw7w9MnoY0J0mf9o09smtItUiBfc9a7\nnhAhAxd7O4Uf1HkfVNLY9CXdV5i86TF1D5GvL3NLh67huLJ4F0dyT8IO5k2dQpal\nzzk/DlZk23Ua+Ff0/08eb25sqwKBgQDCjxg7D3t99nlaU9CAqDtqfTa9O392Tcin\nNJbv7RL9Ro170HytptbKOxEvF2X59amfYCCshutqqDr0cVMiGzmcVNfQP2qPmQWe\nZ61QNUjbxdSUvbrL6skTdt1Q2mUgtX7RPzXqEIHZQr2BZ0idXQzFllgZekuMK1YR\nRYfeKujETQKBgEq52KNkH3E4JhOAeAmjqJXsM6oRihUANa6kQTZiCrO8batzttW+\n/xhn+ly38grTjD04DS+kwSD+agzEhgz9TVbxTKLV6XS7OpcLtuBlNSzLGw/omrOx\nyHkigH28+unAtfe0XZ1HJXdMbn7pJttwA5jJmNJkepQmD69Q5GpminSpAoGBAKlV\ngfFleEYZz2UercpMoen9MTdiIX4GFS3yR6xq2qw2S84Hl3xMSYWaA0rJQqhbeFaO\ng+GlTCB4a1d1irWUnH/EGFHX4Bc7R/imo+G7fr5JYMxUldAFeRzHx7gnXP0q+kWE\njpg55coCnI2UJ09PPV57jBIgrsBAt5gwvCBRmGXBAoGAK5hhBw8dGOoBi9Zr7DBt\nVkB5LP+yZInyts54kN7Lt9cGbmfDU8QqdYa5PADaklfPSId6saNAUk5e3ugxJqw9\nZicRZE3GF1dNTiE0bn2TJ1iAfXGH/34iAZE3yeJWHzDJ3scvDz6h7oE7Jy76Y+hp\nmOLxgZxM4hQiNv+/3EQlLNU=\n-----END PRIVATE KEY-----\n",
-      "apiKey": "",
       "connected": true,
-      "lastSynced": "2026-09-19T21:14:23.122Z"
+      "lastSynced": "2026-09-20T16:09:46.772Z"
     }
   },
   "item_types": [
@@ -134,8 +133,170 @@
       "description": "Enterprise brand design and web experience"
     }
   ],
-  "names": [],
-  "items": [],
-  "orders": [],
+  "names": [
+    {
+      "id": "name-1789853678254",
+      "type": "customer",
+      "name": "Alpheus Chuene",
+      "companyName": "Nkokone Building Services",
+      "email": "alpheuschuene@gmail.com",
+      "phone": "#ERROR!",
+      "address": "Stand 1992, Lebowakgomo, Zone F, 0737",
+      "notes": ""
+    },
+    {
+      "id": "name-1786210606722",
+      "type": "customer",
+      "name": "Lindiswa Asiya",
+      "companyName": "THEMBELISHA DAY CARE & PRE SCHOOL",
+      "email": "info@thembelishadaycare.co.za",
+      "phone": "27658882266",
+      "address": "8350& 8351 SEFOKABOLEA STREET , KATLEHONG , Guateng , 1431",
+      "notes": ""
+    }
+  ],
+  "items": [
+    {
+      "id": "item-1789853566972",
+      "sku": "WPA-1467",
+      "name": "Search Engine Optimization",
+      "type": "Service",
+      "unitPrice": 850,
+      "description": "Rank/List on Google (Google Business Profile & SEO Setup)",
+      "taxable": true
+    },
+    {
+      "id": "item-1789853477599",
+      "sku": "WPA-1932",
+      "name": "Maintenance",
+      "type": "Service",
+      "unitPrice": 500,
+      "description": "Annual Maintenance",
+      "taxable": true
+    },
+    {
+      "id": "item-1789853334040",
+      "sku": "WPA-9105",
+      "name": "Professional email",
+      "type": "Fee",
+      "unitPrice": 350,
+      "description": "customised email address fee per year",
+      "taxable": true
+    },
+    {
+      "id": "item-1789853294755",
+      "sku": "WPA-6317",
+      "name": "Domain",
+      "type": "Fee",
+      "unitPrice": 99,
+      "description": ".co.za domain customization fee per year",
+      "taxable": true
+    },
+    {
+      "id": "item-1789853239079",
+      "sku": "WPA-3918",
+      "name": "Hosting",
+      "type": "Fee",
+      "unitPrice": 350,
+      "description": "Hosting Once-Off Setup Fee",
+      "taxable": true
+    },
+    {
+      "id": "item-1789853184372",
+      "sku": "WPA-8825",
+      "name": "Development",
+      "type": "Service",
+      "unitPrice": 3000,
+      "description": "Website design and development (discounted @30%)",
+      "taxable": true
+    },
+    {
+      "id": "item-1789853108715",
+      "sku": "WPA-6857",
+      "name": "Development",
+      "type": "Service",
+      "unitPrice": 3900,
+      "description": "Website design and development",
+      "taxable": true
+    }
+  ],
+  "orders": [
+    {
+      "id": "ord-1789853926185",
+      "orderNumber": "QTE-2026-002",
+      "orderType": "quote",
+      "nameId": "name-1789853678254",
+      "date": "2026-09-19",
+      "dueDate": "2026-10-19",
+      "status": "Sent",
+      "subtotal": 4649,
+      "taxAmount": 0,
+      "total": 4649,
+      "amountPaid": 0,
+      "balanceDue": 4649,
+      "lineItems": [
+        {
+          "id": "li-1",
+          "itemId": "item-1789853184372",
+          "description": "Development - Website design and development (discounted @30%)",
+          "quantity": 1,
+          "unitPrice": 3000,
+          "amount": 3000,
+          "taxable": true
+        },
+        {
+          "id": "li-1789853754270",
+          "itemId": "item-1789853294755",
+          "description": "Domain - .co.za domain customization fee per year",
+          "quantity": 1,
+          "unitPrice": 99,
+          "amount": 99,
+          "taxable": true
+        },
+        {
+          "id": "li-1789853762690",
+          "itemId": "item-1789853334040",
+          "description": "Professional email - customised email address fee per year",
+          "quantity": 1,
+          "unitPrice": 350,
+          "amount": 350,
+          "taxable": true
+        },
+        {
+          "id": "li-1789853775098",
+          "itemId": "item-1789853566972",
+          "description": "Search Engine Optimization - Rank/List on Google (Google Business Profile & SEO Setup)",
+          "quantity": 1,
+          "unitPrice": 850,
+          "amount": 850,
+          "taxable": true
+        },
+        {
+          "id": "li-1789853822156",
+          "itemId": "item-1789853239079",
+          "description": "Hosting - Hosting Once-Off Setup Fee",
+          "quantity": 1,
+          "unitPrice": 350,
+          "amount": 350,
+          "taxable": true
+        }
+      ]
+    },
+    {
+      "id": "ord-1786210732840",
+      "orderNumber": "QTE-2026-001",
+      "orderType": "quote",
+      "nameId": "name-1786210606722",
+      "date": "2026-08-08",
+      "dueDate": "2026-09-07",
+      "status": "Draft",
+      "subtotal": 3000,
+      "taxAmount": 450,
+      "total": 3450,
+      "amountPaid": 0,
+      "balanceDue": 3450,
+      "lineItems": []
+    }
+  ],
   "transactions": []
 }
